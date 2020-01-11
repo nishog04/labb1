@@ -8,7 +8,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.Arrays;
 
 @RestController
@@ -21,7 +20,7 @@ public class Controller {
     RestTemplate restTemplate;
 
     @RequestMapping(value = "/movies")
-    public String getTopRatedMovies(){
+    public String getTopRatedMovies() {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -29,10 +28,11 @@ public class Controller {
 
         return restTemplate.exchange(
                 URL + "top_rated" + apiKey, HttpMethod.GET, entity, String.class).getBody();
+
     }
 
     @RequestMapping(value = "/favorites")
-    public String getFavoriteMovie(){
+    public String getFavoriteMovie() {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -41,6 +41,4 @@ public class Controller {
         return restTemplate.exchange(
                 URL + "278" + apiKey, HttpMethod.GET, entity, String.class).getBody();
     }
-
-
 }
